@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+	<script type= "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	<script src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="normalize.css">
+	<title>Your Profile</title>
+</head>
+<body ng-controller='bodyMaster'>
+<div class = "col-1-2" class="container">
+<!-- Main Page/Content -->
+	<div>
+		<div class="flowing">
+			<h1> {{ greeting }} </h1>
+			<h2 class="textWrapper"> {{ name }} </h2>
+			<h3> About Me </h3>
+			<img ng-src={{picture}}>
+			<p class="textWrapper"> {{ about }}</p>
+			<h3>Favorite Books</h3>
+			<ul class = "textWrapper" ng-repeat="book in books | orderBy">
+				<li>  {{ book }} </li>
+			</ul>
+			<h3> Favorite JS Libraries </h3>
+			<ul class = "textWrapper" ng-repeat="thing in library | orderBy"> 
+				<li> {{ thing }} </li>
+			</ul>
+		</div>
+		<div>
+		<button ng-click="revealForm()">Submit Profile Information</button>
+	</div>
+
+<!-- Submission Form -->
+	<div class = "fixer" ng-hide="hideMe">
+		<div>
+			<form>
+			<p>Change Your Name</p>
+				<input ng-model="myName">
+				<input ng-click="namePlacer(event)" type="submit">
+			<p>Change Your Profile Pic</p>
+				<input placeholder="Must be 'http://~'" ng-model="myPicture">
+				<input ng-click="picPlacer(event)" type="submit">
+			<p>Change Your Bio</p>
+				<input style="overflow: visible" ng-model="myAbout">
+				<input ng-click="bioPlacer(event)" type="submit">
+			<p>Enter Your Favorite Books</p>
+				<input ng-model="myBooks">
+				<input ng-click="bookPlacer(event)" type="submit">
+			<p>Enter Your Favorite JS Libraries</p>
+				<input ng-model="myLibrary">
+				<input ng-click="libraryPlacer(event)" type="submit">
+			</form>
+		</div>
+	</div>
+<!-- da end -->	
+	</div>
+</div>
+<!-- <div class = "col-1-2">
+<h1> this is a test </h1>
+</div> -->
+</body>
+</html>
